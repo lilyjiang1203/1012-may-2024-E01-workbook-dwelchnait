@@ -5,7 +5,9 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CylinderAreaAndVolume", "CylinderAreaAndVolume\CylinderAreaAndVolume.csproj", "{87908650-CCA4-4167-8E06-C371B73302B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexagon", "Hexagon\Hexagon.csproj", "{24157232-58E4-46BD-B033-CC3C8A86BE1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hexagon", "Hexagon\Hexagon.csproj", "{24157232-58E4-46BD-B033-CC3C8A86BE1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModulusDivision", "ModulusDivision\ModulusDivision.csproj", "{3F2E72E3-CFC1-4A26-9213-03F931977A9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{24157232-58E4-46BD-B033-CC3C8A86BE1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24157232-58E4-46BD-B033-CC3C8A86BE1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24157232-58E4-46BD-B033-CC3C8A86BE1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F2E72E3-CFC1-4A26-9213-03F931977A9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F2E72E3-CFC1-4A26-9213-03F931977A9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F2E72E3-CFC1-4A26-9213-03F931977A9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F2E72E3-CFC1-4A26-9213-03F931977A9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
