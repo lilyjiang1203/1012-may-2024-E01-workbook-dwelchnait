@@ -11,10 +11,15 @@
 //  holding both numbers and characters
 //the characters within the double quotes is a literal
 
+<<<<<<< Updated upstream
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 //string myName = "Don";
 //int classSize = 15, floorNumber;
+=======
+string myName = "NICE";
+int classSize = 15, floorNumber;
+>>>>>>> Stashed changes
 
 //string alpha-number characters
 //int is an integer
