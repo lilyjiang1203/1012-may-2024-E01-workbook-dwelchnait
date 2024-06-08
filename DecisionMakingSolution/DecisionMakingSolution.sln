@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nested_IF", "Nested_IF\Nest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BranchIfs", "BranchIfs\BranchIfs.csproj", "{40EAD50E-61EB-4C15-865E-7A03E3B84B4B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchDecisions", "SwitchDecisions\SwitchDecisions.csproj", "{BB19EBE9-D964-4D72-ABFE-B1EBEBBEF9CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{40EAD50E-61EB-4C15-865E-7A03E3B84B4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40EAD50E-61EB-4C15-865E-7A03E3B84B4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40EAD50E-61EB-4C15-865E-7A03E3B84B4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB19EBE9-D964-4D72-ABFE-B1EBEBBEF9CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB19EBE9-D964-4D72-ABFE-B1EBEBBEF9CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB19EBE9-D964-4D72-ABFE-B1EBEBBEF9CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB19EBE9-D964-4D72-ABFE-B1EBEBBEF9CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

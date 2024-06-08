@@ -74,5 +74,29 @@ else
         admissionAmount = 10.00;
     }
 
+    //coded as a nested if
+    //if (age <= 6)
+    //{
+    //    admissionAmount = 0.0;
+    //}
+    //else
+    //{
+    //    if (age > 6 && age <= 17) //the first first is optional age > 6 &&
+    //    {
+    //        admissionAmount = 9.80;
+    //    }
+    //    else
+    //    {
+    //        if (age <= 54)
+    //        {
+    //            admissionAmount = 11.35;
+    //        }
+    //        else
+    //        {
+    //            admissionAmount = 10.00;
+    //        }
+    //    }
+    //}
+
     Console.WriteLine($"\n\tA ticket for your age of {age} will cost ${admissionAmount.ToString("0.00")}\n");
 }
