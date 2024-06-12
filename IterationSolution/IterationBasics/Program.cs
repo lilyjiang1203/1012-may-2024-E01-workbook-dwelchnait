@@ -47,14 +47,18 @@ while (!valid)
     }
     else
     {
+       
         if (mySquare <= 0)
         {
+            
             Console.WriteLine($"\n\tYour number {mySquare} is not a positive number\n");
         }
         else
         {
+          
             valid = true;
         }
+      
     }
 }
 //
@@ -72,6 +76,7 @@ while (!valid)
 //         this will be regarded as a MAJOR LOGIC ERROR
 //         EACH occurance of this type of coding will be treated as a separate MAJOR LOGIC ERROR
 
+Console.WriteLine("\n\tThis answer is calculated using the while loop structure\n");
 Console.Write($"\n\t The sum of squares for {mySquare} is ");
 while(loopCounter <= mySquare)
 {
@@ -82,6 +87,35 @@ while(loopCounter <= mySquare)
         Console.Write("+ ");
     }
     loopCounter++; //the same as loopCounter = loopCounter + 1
+}
+
+Console.WriteLine($"= {sumOfSquares}\n");
+
+//using the pre-test structure called for loop
+//the structure is also known as a counter loop
+//the structure is self contained with respect to the loop counter
+//
+//syntax :
+//    for(initialization area; condition(s); increment/decrement area)
+//    [{]
+//      loop code
+//    [}]
+sumOfSquares = 0; //reset to 0
+Console.WriteLine("\n\tThis answer is calculated using the for loop structure\n");
+Console.Write($"\n\t The sum of squares for {mySquare} is ");
+
+//NOTE: the loop counter declared within the for structure is ONLY
+//          alive as long as the for loop is executing
+//      use of the declared loop counter outside of the loop will NOT
+//          even compile because the counter is out of scope.
+for (int forLoopCounter = 1; forLoopCounter <= mySquare; forLoopCounter++) 
+{
+    sumOfSquares += forLoopCounter * forLoopCounter;
+    Console.Write($"{forLoopCounter} X {forLoopCounter} ");
+    if (forLoopCounter < mySquare)
+    {
+        Console.Write("+ ");
+    }
 }
 
 Console.WriteLine($"= {sumOfSquares}\n");
