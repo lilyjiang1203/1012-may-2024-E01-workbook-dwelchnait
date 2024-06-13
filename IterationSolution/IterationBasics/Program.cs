@@ -119,3 +119,37 @@ for (int forLoopCounter = 1; forLoopCounter <= mySquare; forLoopCounter++)
 }
 
 Console.WriteLine($"= {sumOfSquares}\n");
+
+//do until looping structure
+//also called a post-test
+//differs from a pre-test such as
+//  a) the processing logic will be done at least once
+//  b) the loop test is at the end of the loop
+
+//syntax:
+
+//do
+//[{]
+//   loop processing
+//[}] while (condition(s));
+
+int num = 0;
+Console.WriteLine("\n\tThis example is for a do-while loop structure\n");
+
+//read input until the user enters 0
+do
+{
+    Console.Write("\tEnter a number; use 0 to terminate:\t");
+    inputValue = Console.ReadLine();
+    //assume valid data
+    num = int.Parse(inputValue);
+
+    //IF you do not wish the following processing to be done
+    //  you need to check for the termination value
+    if (num != 0)
+    {
+        //do this processing logic
+        Console.WriteLine($"\n\tYou entered the value {num}");
+    }
+} while (num != 0); //if true do the loop again
+                    //if false fall out of the loop
