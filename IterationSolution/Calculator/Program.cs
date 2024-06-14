@@ -17,6 +17,8 @@ Random rnd = new Random(); //to generate 2 numbers for the calculation
 // d) Division
 // x) exit
 
+//remember with the do-while you will do your logic at least once.
+
 do
 {
     Console.WriteLine("\nYour choices for a calculation are:");
@@ -33,22 +35,27 @@ do
     {
         case "A":
             {
-                Console.WriteLine($"\nyou entered {menuChoice}\n");
+
+                Console.Write($"\nWhat is the answer to {firstNumber} + {secondNumber}:\t");
+                calculationResult = firstNumber + secondNumber;
                 break;
             }
         case "B":
             {
-                Console.WriteLine($"\nyou entered {menuChoice}\n");
+                Console.Write($"\nWhat is the answer to {firstNumber} - {secondNumber}:\t");
+                calculationResult = firstNumber - secondNumber;
                 break;
             }
         case "C":
             {
-                Console.WriteLine($"\nyou entered {menuChoice}\n");
+                Console.Write($"\nWhat is the answer to {firstNumber} X {secondNumber}:\t");
+                calculationResult = firstNumber * secondNumber;
                 break;
             }
         case "D":
             {
-                Console.WriteLine($"\nyou entered {menuChoice}\n");
+                Console.Write($"\nWhat is the answer to {firstNumber} / {secondNumber}:\t");
+                calculationResult = firstNumber / secondNumber;
                 break;
             }
         case "X":
@@ -62,5 +69,17 @@ do
                 break;
             }
     }//eos
+
+    //common logic just once
+    inputValue = Console.ReadLine();
+    userGuess = double.Parse(inputValue);
+    if (userGuess == calculationResult)
+    {
+        Console.WriteLine($"\nYes, you answer of {userGuess} is correct");
+    }
+    else
+    {
+        Console.WriteLine($"\nNo, you answer of {userGuess} is incorrect. The correct answer is {calculationResult}");
+    }
 } while(menuChoice.ToUpper() != "X"); //menuChoice != "X" || menuChoice != "x"
 
