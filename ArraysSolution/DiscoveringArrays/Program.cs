@@ -72,6 +72,7 @@ for(int index = 0; index < grades.Length; index++)
     //Console.WriteLine($"The grade at index {index} is {grades[index]}");
 }//eof
 
+
 //declaring the array size by supplying a set of values on the declaring statement
 //when you supply a set of values, the system automatically set the size of your array
 //  to the number of values
@@ -86,11 +87,88 @@ for (int index = 0; index < dayOfWeek.Length; index++)
 //order your array values by using a method of arrays called Sort
 //Array.Sort(grades); //ascending the sort form
 
-//Array.Sort(grades, (x, y) => x.CompareTo(y)); //ascending
-Array.Sort(grades, (x, y) => y.CompareTo(x)); //descending
+//Array.Sort(grades, (x, y) => x.CompareTo(y)); //ascending using a predicate
+Array.Sort(grades, (x, y) => y.CompareTo(x)); //descending using a predicate
 
 for (int index = 0; index < grades.Length; index++)
 {
     Console.WriteLine($"The grade at index {index} is {grades[index]}");
 }//eof
 
+Console.WriteLine("\nusing the Array.Clear() method\n");
+Array.Clear(grades); //resets array to default values;
+//Array.Clear(grades, 0, 16); //resets an array range to default values;
+for (int index = 0; index < grades.Length; index++)
+{
+    //Console.WriteLine($"The grade at index {index} is {grades[index]}");
+}//eof
+
+Console.WriteLine("\n\n\tWorking with a paritally filled array\n\n");
+Console.WriteLine("\nFill only half the array with numbers\n");
+for (int index = 0; index < PHYSICALSIZE / 2; index++)
+{
+    //syntax to reference an array element is:  arrayname[index]
+    grades[index] = (double)rnd.Next(0, 10000) / 100.0;
+
+}
+
+for (int index = 0; index < grades.Length; index++)
+{
+    Console.WriteLine($"The grade at index {index} is {grades[index]}");
+}//eof
+
+//Console.WriteLine("\nSort partially filled array ascending\n");
+//Array.Sort(grades);  //this Sort is using ALL elements within the array
+//for (int index = 0; index < grades.Length; index++)
+//{
+//    Console.WriteLine($"The grade at index {index} is {grades[index]}");
+//}//eof
+
+Console.WriteLine("\nSort partially filled array ascending using the filled portion of the array\n");
+//Array.Sort(arrayname, starting index, for number of elements)
+Array.Sort(grades, 0, PHYSICALSIZE/2);
+for (int index = 0; index < grades.Length; index++)
+{
+    //Console.WriteLine($"The grade at index {index} is {grades[index]}");
+}//eof
+
+Console.WriteLine("\n\n\tLocating an item in your array\n\n");
+double searchArg = 13.0;
+//double searchArg = grades[rnd.Next(0, PHYSICALSIZE /2)]; //value to find in the array
+int foundIndex = -1; //the index in the array where the value was found
+                     //using the index value as a "flag" to indicate whether
+                     //     the item was located within the array
+                     //since indexes run from 0 upwards, -1 is NOT a possible index
+//this sort will be done using a loop: this is the generic search loop
+//for(int i = 0; i < PHYSICALSIZE /2; i++)
+//{
+//    if (grades[i] ==  searchArg)
+//    {
+//        foundIndex = i;
+//        //logical quick exit
+//        //this means NO: break; continue; return; which are unstructure code AND TOTALLY unacceptable in this course
+//        i = PHYSICALSIZE /2;
+//    }
+//}
+
+//Array has a method that will do the search for you
+//Array FindIndex(arrayname, predicate)
+// where x represents any element in the array
+// => lamda symbol (read as: do the following)
+//predicate which is the condition to execute for the current element of the array
+//what is returned
+//  not found returns -1
+//  found returns the index of the FIRST element satisfying the predicate
+foundIndex = Array.FindIndex(grades, x => x == searchArg); 
+
+
+//test to see if the value was located in the array
+
+if (foundIndex == -1)
+{
+    Console.WriteLine($"Search value {searchArg} is not found.");
+}
+else
+{
+    Console.WriteLine($"Search value {searchArg} found at index {foundIndex}.");
+}

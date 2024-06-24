@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System;
+using System.Reflection;
 
 Console.WriteLine("Partial Array filling\n\n");
 
@@ -64,3 +65,4 @@ for (int index = 0; index < logicalSize; index++)
     sumOfNumbers += numbers[index];
 }//eof
 Console.WriteLine($"The average of the array numbers is: {sumOfNumbers / logicalSize}");
+
