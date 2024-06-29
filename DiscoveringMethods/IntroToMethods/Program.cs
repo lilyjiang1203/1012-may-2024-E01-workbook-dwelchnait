@@ -28,6 +28,8 @@ int num1 = 0;
 int num2 = 0;
 double result = 0.0;
 string choice = "";
+bool valid = true;
+string symbol = "";
 
 //method call statement
 //uses the method name and supplies any required values for parameters
@@ -44,7 +46,56 @@ num1 = GetIntegerNumber("Enter you first calculation number.");
 //reuse the method to get the second number
 num2 = GetIntegerNumber("Enter you second calculation number.");
 
-Console.WriteLine($"\nNumber 1: {num1} and Number 2: {num2}");
+//Console.WriteLine($"\nNumber 1: {num1} and Number 2: {num2}");
+
+//obtain your calculator operation choice
+choice = CalculatorMenu(); //call to the method CalculatorMenu
+
+switch(choice.ToLower())
+{
+    case "a":
+        {
+            result = (double) (num1 + num2);
+            symbol = "+";
+            break;
+        }
+    case "b":
+        {
+            result  = (double)(num1 - num2);
+            symbol = "-";
+            break;
+        }
+    case "c":
+        {
+            result = (double)(num1 * num2);
+            symbol = "*";
+            break;
+        }
+    case "d":
+        {
+            //preventitive logic
+            if (num2 == 0)
+            {
+                Console.WriteLine("You can not divide by zero.");
+                valid = false;
+            }
+            else
+            {
+                result = (double)num1 / (double)num2; //change numbers to doubles BEFORE doing the division
+                symbol = "/";
+            }
+            break;
+        }
+    default:
+        {
+            Console.WriteLine($"Your menu choice of {choice} is incorrect.");
+            break;
+        }
+}//eos
+
+//Note: this method does NOT receive any return value
+
+DisplayResults(num1, num2, result, valid, symbol);
 #endregion
 
 #region Methods
@@ -131,6 +182,7 @@ static int GetIntegerNumber(string prompt)
     int localNumber = 0;
     Console.Write($"{prompt}\t:");
     inputValue = Console.ReadLine();
+    
     //do appropriate validation on user input value
 
     localNumber = int.Parse(inputValue);
@@ -139,5 +191,37 @@ static int GetIntegerNumber(string prompt)
     //the return statement has a SINGLE value
     //the datatype of the value MUST match the returndatatype on the method header
     return localNumber;
+}
+
+static string CalculatorMenu()
+{
+    //This method will display a list of choices for the user
+    //The user will enter their choice and the method will read the input
+    //The method will return the entered string
+
+    string choice = ""; //this is NOT the same variable as declared in the main driver
+                        //this is a local variable that exists ONLY as long as the method executes
+
+    Console.WriteLine("Calculator Operations");
+    Console.WriteLine("a) Addition");
+    Console.WriteLine("a) Substration");
+    Console.WriteLine("a) Multiplation");
+    Console.WriteLine("a) Division");
+    Console.Write("Enter your operation choice:\t");
+
+    choice = Console.ReadLine();
+    return choice;
+}
+
+static void DisplayResults(int num1, int num2, double results, bool valid, string symbol)
+{
+    //Notice that there is NO return statement, hence, the void returndatatype
+
+    //this method will display the result of the calculator operation
+
+    if (valid)
+    {
+        Console.WriteLine($"{num1} {symbol} {num2} = {results}");
+    }
 }
 #endregion
