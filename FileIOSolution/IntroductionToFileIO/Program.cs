@@ -174,10 +174,86 @@ static void DisplayClassList(string[] studentNames, double[] studentMarks, int l
 
 static int AddStudentandMark(string[] studentNames, double[] studentMarks, int logicalSize)
 {
-    return logicalSize;
+    //logicalSize is a value type variable
+    //when one passes a value type variable, the method get a copy of the value
+
+    bool continueAdding = true;
+    string inputValue = "";
+    //check is there room to add another student?
+    if (logicalSize < studentMarks.Length)
+    {
+        while(logicalSize < studentMarks.Length && continueAdding)
+        {
+            Console.Write("\nEnter student name:\t");
+            inputValue = Console.ReadLine();
+
+            // you would place any validation for your data here
+            // for this example, we are assuming valid data
+
+            studentNames[logicalSize] = inputValue;
+
+            Console.Write("Enter student mark:\t");
+            inputValue = Console.ReadLine();
+            studentMarks[logicalSize] = double.Parse(inputValue);
+
+            logicalSize++;
+
+            Console.Write("Enter another student (Y or N):\t");
+            inputValue = Console.ReadLine();
+            if (inputValue.ToUpper().Equals("N"))
+            {
+                continueAdding = false;
+            }
+        }
+    }
+    else
+    {
+        Console.WriteLine("The class is full. Unable to add another student. ");
+    }
+    return logicalSize; //logicalSize is a value type variable
 }
 
 static void WriteNamesandMark(string[] studentNames, double[] studentMarks, int logicalSize, string fileName)
 {
+    //setup the StreamWriter instance
+    StreamWriter writer = null;
+    string outputLine = "";
+    string filePath = $"../../../{fileName}";
 
+    //anything can go wrong when writing
+    //therefore, like other coding area, we will use a try/catch to handle any exception
+    try
+    {
+        //create an instance of the actual StreamWriter
+        
+        //if your file DOES NOT exist, it will be created and opened
+        //if your file DOES exist, it will be opened
+
+        //depending on the write options, action against your will vary
+        // a)to OVERWRITE all existing lines use the option-> false
+        // b)to APPEND to the existing lines use the option-> true
+        writer = new StreamWriter(filePath, false);
+
+        //write to the file
+        //my program will control the writing of the lines
+        for(int i = 0; i < logicalSize; i++)
+        {
+            //building my file line
+            outputLine = $"{studentNames[i]},{studentMarks[i]}";
+            //write the line to the file
+            writer.WriteLine(outputLine);
+        }
+    }
+    catch(Exception ex)
+    {
+        Console.WriteLine($"System Error: {ex.Message}");
+    }
+    finally
+    {
+        //close the opened file
+        if (writer != null)
+        {
+            writer.Close();
+        }
+    }
 }
