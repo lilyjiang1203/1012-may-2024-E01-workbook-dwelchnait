@@ -16,11 +16,17 @@ Dog myPet = null;
 //the result of the new execution is getting a physical memory allocated instance of your class
 myPet = new Dog();
 
-myPet.name = "No";
+//the following line is using the class property Name to store the user's
+//      data value
+//since Name is receiving a value, the property's setter is being used
+myPet.Name = "No";
 myPet.age = 4;
 myPet.breed = Breed.Poodle;
 
-Console.WriteLine($"My pet characteristics are; Name: {myPet.name} Age: {myPet.age} Breed: {myPet.breed}");
+// myPet.Name is using the property's getter
+Console.WriteLine($"My pet characteristics are; Name: {myPet.Name} Age: {myPet.age} Breed: {myPet.breed}");
+
+Console.WriteLine($"\n{myPet.ToString()}");
 
 
 
