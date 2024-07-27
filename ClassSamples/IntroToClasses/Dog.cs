@@ -25,8 +25,10 @@ namespace IntroToClasses
         //     will have the same name BUT the data member will have a starting
         //     underscore
         private string _Name; 
-        public int age;
-        public Breed breed;
+        private int _Age;
+        private Breed _dogBreed;
+        private string _FirstName;
+        private string _LastName;
 
         //property members
         //a property is an interface to private data within your class definition
@@ -58,14 +60,85 @@ namespace IntroToClasses
         public string Name
         {
             get { return _Name; }
-            set { _Name = value; }
+            set 
+            {
+                //testing that the incoming data (localed in the key word: value) has something in it
+                //the test is against a string: use IsNullOrWhitespace
+                //if the incoming data is null, empty or just contains blank characeters
+                //      then don't accept the value, instead, raise an error to the user
+
+                //NEVER EVER EVER EVER EVER DISPLAY A MESSAGE FROM YOUR CLASS TO THE CONSOLE
+                //NO CONSOLE.WRITELINE!!!!!!!!!!!!!!!!!!!!!!
+
+                //Raised errors will terminate the creation of your instance.
+                //Raised errors will immediately exit your class code execute and return to the
+                //  calling code (your main program)
+                //In your main program use "user friendly error handling (try/catch) to catch the
+                //  error and display the thrown message
+
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentNullException("Name","Your dog's name is required");
+
+                //sanitatize string data
+                //use the .Trim() string method
+                _Name = value.Trim(); 
+            }
         }
 
+        public int Age
+        {
+            //Age must be 0 or greater
+            get { return _Age; }
+            set 
+            {
+                if (value < 0)
+                    throw new ArgumentException("Age must be 0 or greater", "Age");
+                _Age = value; 
+            }
+        }
+
+        public Breed DogBreed
+        {
+            get { return _dogBreed; }
+            set { _dogBreed = value; }
+        }
+
+        public string FirstName
+        {
+            get { return _FirstName; }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentNullException("First Name", "Your first name is required");
+
+                _FirstName = value;
+            }
+        }
+
+        public string LastName
+        {
+            get { return _LastName; }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentNullException("Last Name", "Your first name is required");
+
+                _LastName = value;
+            }
+        }
+
+        //Read only properties DO NOT have a set component
+        //Read only properties uses a get to combine information ALREADY contained on the instance
+        //  to return a value that is computed
+        public string FullName
+        {
+            get { return LastName + ", " + FirstName; }
+        }
 
         public override string ToString()
         {
-            //{Name} is using the getter of the property Name
-            return $"{Name},{age},{breed}";
+            //{Name} {Age} is using the getter of the property Name
+            return $"{Name},{Age},{DogBreed}";
         }
     }
 }
