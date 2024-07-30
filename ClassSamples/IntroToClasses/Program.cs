@@ -10,25 +10,28 @@ Dog myPet = null;
 //to reference an item within your instance, you will use the . (dot) operator
 //if your variable does not contain an instance of the class, it will abort your program
 
-//obtain an instance of your class
-//this is called a class instance
-//use the new operator to obtain an instance of the specified class
-//the result of the new execution is getting a physical memory allocated instance of your class
-myPet = new Dog();
-
 //Since the class can possible throw an exception, any action involving the instance
 //  needs to be place within a try/catch
-
 try
 {
+    //obtain an instance of your class
+    //this is called a class instance
+    //use the new operator to obtain an instance of the specified class
+    //the result of the new execution is getting a physical memory allocated instance of your class
+    myPet = new Dog();  //default  constructor
+
     //the following line is using the class property Name to store the user's
     //      data value
     //since Name is receiving a value, the property's setter is being used
-    myPet.Name = "No";
-    myPet.Age = 4;
-    myPet.DogBreed = Breed.Poodle;
-    myPet.FirstName = "Don";
-    myPet.LastName = "Welch";
+    //myPet.Name = "No";
+    //myPet.Age = 4;
+    //myPet.DogBreed = Breed.Poodle;
+    //myPet.FirstName = "Don"; //uses the property
+    //myPet.SetFirstName = "Don"; //uses the method technique to store data within the instance
+    //myPet.LastName = "Welch";
+
+    //myPet = new Dog("No", 4, Breed.Collie, "Don", "Welch");  //greedy constructor
+
 
     // myPet.Name is using the property's getter
     // myPet.FullName is a read-only properties which returns a concatenation of LastName and FirstName

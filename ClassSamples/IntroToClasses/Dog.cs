@@ -97,11 +97,23 @@ namespace IntroToClasses
             }
         }
 
-        public Breed DogBreed
-        {
-            get { return _dogBreed; }
-            set { _dogBreed = value; }
-        }
+        //fully implemented version of the property
+        //public Breed DogBreed
+        //{
+        //    get { return _dogBreed; }
+        //    set { _dogBreed = value; }
+        //}
+
+        //Auto-implemented property
+        //DOES NOT use a data member
+        //auto implemented properties lefts the data storage to the system to handle
+        //auto implemented properties have NO validation code
+        //typically used when data just needs to be held in the instance
+        //this is a quick short form of hanging on to data within an instance
+        //any data held by a auto-implemented property can ONLY be accessed via that property
+        //why not do all properties like this?
+        //answer: who will be responsible for the data validation? the coder, the constructor, the method
+        public Breed DogBreed { get; set; }
 
         public string FirstName
         {
@@ -135,10 +147,132 @@ namespace IntroToClasses
             get { return LastName + ", " + FirstName; }
         }
 
+        //constructors
+        //  these are used during the creation of an instance (occurance) of your
+        //    class durig your program execution
+
+        //a class DOES NOT need a constructor physically code for it
+        //if a class DOES NOT have a physically code constructor method then
+        //      the system will create the instance of your class
+        //      using the system default values for your field datatype
+
+        //HOWEVER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //IF YOU CODE A CONSTRUCTOR PHYSCIALLY FOR YOUR CLASS, YOU ARE TOTALLY
+        //      RESPONSIBLE FOR ANY AND ALL CONSTRUCTORS OF THE CLASS
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+        //how many constructors can a class have? Many
+
+        //the purpose of the constructor is to ensure that the user of the class
+        //  gets a expected usable valid instance of the class
+
+        //there is generally two types of constructors coded for a class
+        //you DO NOT need to code both!!!
+
+        //syntax for a general constructor
+        //   public className( [list of parameters] ) { coding block }
+
+        //access: public
+        //NO RETURN DATATYPE
+        //name: is your class name
+        //parameters: are optional
+        //coding block: is C# code
+
+        //Default constructor
+        //this constructor will not have any parameters
+        //the assumption is the data will have either
+        //  a) the system datatype defualts
+        //  b) any assigned literal values to ensure property validation is meet
+
+        public Dog()
+        {
+            //this is a default constructor
+            //SINCE our properties have business rules (validation)
+            //  our "default" constructor should ensure that data members within
+            //  our class instance passes any validation
+
+            //Consideration!!!!
+            //does the property have any validation htat would be violated
+            //  by just using the system datatype defaults?
+
+            //in this example Name, FirstName and LastName cannot be null, empty or jsut blanks
+            //thus, a literal value was assigned that would pass the valdiation
+
+            //Age has a validation but the system datatype default would survice
+
+            Name = "unknown";
+            FirstName = "unknown";
+            LastName = "unknown";
+            Age = 0; //this is optional as the system datatype value is also 0
+            DogBreed = Breed.Poodle; //this is optional as the system default also uses the first enum value
+
+        }
+
+        // Greedy Constructor
+        //this constructor will receive a set of values for the data within the class
+        //the parameters list is a complete list of values to cover all data members
+        //  within the class
+        //the constructor will assign the incoming values to the appropriate
+        //  data members.
+        //BEST PRACTICE: ASSIGN THE INCOMING VALUES TO THE DATA MEMBERS VIA THEIR PROPERTY
+        //Why: the data will be validated 
+
+        public Dog(string name, int age, Breed breed, string firstname, string lastname)
+        {
+            //it is possible to include validation for your incoming data within
+            //  the greed constructor 
+            //you might do this IF your properties do NOT contain validation
+            //                  IF you have additional validation that is no within the property
+            //                  IF your setter is private (not part of this course)
+            //REMEMBER that once the instance is created using the constructor ANY alternations
+            //  to you data via properties or methods, should, contain validation
+            //Question? Why have the same code in multiple places
+            //Solution:
+            //  a) create a method that could be called from anywhere in the class defintion
+            //      (Modular approach)
+            //  b) if you use the practice of accessing your data via the properties
+            //      within the class definition, then the validation could be placed
+            //      in one location: properties. (Don's Rule)
+
+            Name = name;
+            Age = age;
+            DogBreed = breed;
+            FirstName = firstname;
+            LastName = lastname;
+        }
+
+
+
+
+
+        //methods (behaviours)
+        //what "things" do I wish the class to be able to do
+        //just like methods you have created before.
+        //they can be used to store data into the object instance
+        //they can be used to retrieve data from the object instance
+        //they can do both at the same time
+
         public override string ToString()
         {
             //{Name} {Age} is using the getter of the property Name
             return $"{Name},{Age},{DogBreed}";
+        }
+
+        //code that similates a property
+        public string GetFirstName()
+        {
+
+            // this would replace the getter used in a method
+            return _FirstName;
+        }
+    
+        public void SetFirstName(string value)
+        {
+            // this would replace the setter used in a method
+            if (string.IsNullOrWhiteSpace(value))
+                throw new ArgumentNullException("First Name", "Your first name is required");
+
+            _FirstName = value;
         }
     }
 }
